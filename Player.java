@@ -47,12 +47,16 @@ public class Player
 
     public int getRandomRowGuess()
     {
-        
+        int max = 10;
+        int min = 0;
+        return (int)(Math.random()*(max-min+1)+min);
     }
 
     public int getRandomColGuess()
     {
-        
+        int max = 10;
+        int min = 0;
+        return (int)(Math.random()*(max-min+1)+min);
     }
 
     public boolean makeGuess(int row, int col, Player other)
