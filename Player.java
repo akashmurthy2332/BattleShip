@@ -42,7 +42,16 @@ public class Player
     // Returns whether the ship was successfully added
     public boolean addShip(Ship s)
     {
-        
+        if(s.direction == VERTICAL){
+            if (myGrid.NUM_ROWS < s.getRow() + s.getLength() && myGrid.NUM_COLS < s.getRow()){
+                return false;
+            }
+            myGrid.addShip(s);
+            return true;
+        }
+        if(s.direction == HORIZONTAL){
+            if(myGrid.NUM_COLS < s.getCol() + s.getLength && myGrid.NUM_ROWS < s.getRow())
+        }
     }
 
     public int getRandomRowGuess()
