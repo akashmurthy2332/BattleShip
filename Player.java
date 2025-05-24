@@ -30,19 +30,48 @@ public class Player
     
     private static int computeMaxHits()
     {
-       
+       int hits = 0;
+        for(Ship s: myShips){
+            hits+= s.getLength();
+        }
+        return hits;
     }
 
     public void initializeShipsRandomly()
     {
-        
+        for(int size : SHIP_LENGTHS){
+            while(true){
+                Ship s = new Ship(size);
+                if(()(Math.random()+1)==1){
+                    s.setDirection(HORIZONTAL);
+                } else{
+                    s.setDirection(VERTICAL);
+                }
+                int randX = (int)(Math.random()*myGrid.NUM_COLS-1);
+                int randY = (int)(Math.random()*myGrid.NUM_ROWS-1);
+                s.setLocation(randX,randY);
+                if(addShip(size)){
+                    continue;
+                }
+                break;
+            }
+        }
     }
 
     // Adds a ship if it's a legal placement
     // Returns whether the ship was successfully added
     public boolean addShip(Ship s)
     {
-        
+        if(s.direction == VERTICAL){
+            if (myGrid.NUM_ROWS < s.getRow() + s.getLength() && myGrid.NUM_COLS < s.getRow()){
+                return false;
+            }
+            myGrid.addShip(s);
+            return true;
+        }
+        if(s.direction == HORIZONTAL){
+            if(myGrid.NUM_COLS < s.getCol() + s.getLength && myGrid.NUM_ROWS < s.getRow())
+        }
     }
 
     public int getRandomRowGuess()
@@ -84,7 +113,7 @@ public class Player
      */
     private boolean recordOpponentGuess(int row, int col)
     {
-        
+        return myGrid[row][col] == 
     }
 
     public void printMyShips()
