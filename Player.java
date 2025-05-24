@@ -39,7 +39,23 @@ public class Player
 
     public void initializeShipsRandomly()
     {
-        
+        for(int size : SHIP_LENGTHS){
+            while(true){
+                Ship s = new Ship(size);
+                if(()(Math.random()+1)==1){
+                    s.setDirection(HORIZONTAL);
+                } else{
+                    s.setDirection(VERTICAL);
+                }
+                int randX = (int)(Math.random()*myGrid.NUM_COLS-1);
+                int randY = (int)(Math.random()*myGrid.NUM_ROWS-1);
+                s.setLocation(randX,randY);
+                if(addShip(size)){
+                    continue;
+                }
+                break;
+            }
+        }
     }
 
     // Adds a ship if it's a legal placement
