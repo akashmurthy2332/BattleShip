@@ -30,7 +30,11 @@ public class Player
     
     private static int computeMaxHits()
     {
-       
+       int hits = 0;
+        for(Ship s: myShips){
+            hits+= s.getLength();
+        }
+        return hits;
     }
 
     public void initializeShipsRandomly()
@@ -93,7 +97,7 @@ public class Player
      */
     private boolean recordOpponentGuess(int row, int col)
     {
-        
+        return myGrid[row][col] == 
     }
 
     public void printMyShips()
